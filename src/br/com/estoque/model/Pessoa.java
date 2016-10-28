@@ -17,7 +17,7 @@ public abstract class Pessoa implements Serializable {
 
 	@Column
 	private String nome;
-	
+
 	@Column
 	private String sobrenome;
 
@@ -26,6 +26,9 @@ public abstract class Pessoa implements Serializable {
 
 	@Column
 	private String logradouro;
+
+	@Column
+	private String cpf;
 
 	@Column
 	private String setor;
@@ -59,6 +62,14 @@ public abstract class Pessoa implements Serializable {
 
 	public String getLogradouro() {
 		return logradouro;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public void setLogradouro(String logradouro) {
