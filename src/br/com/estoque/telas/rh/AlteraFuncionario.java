@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class AlteraFuncionario extends JFrame {
@@ -56,6 +57,9 @@ public class AlteraFuncionario extends JFrame {
 		contentPane.add(lblCpf);
 		
 		txtcpf = new JTextField();
+		txtcpf.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtcpf.setEditable(false);
+		txtcpf.setEnabled(false);
 		txtcpf.setBounds(93, 39, 105, 20);
 		contentPane.add(txtcpf);
 		txtcpf.setColumns(10);
