@@ -22,9 +22,9 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 	}
 
 	@Override
-	public Funcionario getFuncionario(long id) {
+	public Funcionario getFuncionario(String cpf) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (Funcionario) session.load(Funcionario.class, id);
+		return (Funcionario) session.load(Funcionario.class, cpf);
 	}
 
 	@SuppressWarnings("unchecked")

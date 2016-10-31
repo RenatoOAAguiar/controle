@@ -8,7 +8,7 @@ public interface InterfaceFuncionario {
 
 	public void save(Funcionario funcionario);
 
-	public Funcionario getFuncionario(long id);
+	public Funcionario getFuncionario(String cpf);
 
 	public List<Funcionario> list(String cpf, String nome);
 

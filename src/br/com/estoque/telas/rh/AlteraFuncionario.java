@@ -1,15 +1,21 @@
 package br.com.estoque.telas.rh;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
+
+import br.com.estoque.dao.FuncionarioDAO;
+import br.com.estoque.model.Funcionario;
+import br.com.estoque.negocio.InterfaceFuncionario;
 
 @SuppressWarnings("serial")
 public class AlteraFuncionario extends JFrame {
@@ -57,12 +63,21 @@ public class AlteraFuncionario extends JFrame {
 		contentPane.add(lblCpf);
 		
 		txtcpf = new JTextField();
-		txtcpf.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtcpf.setEditable(false);
+		txtcpf.setForeground(Color.BLACK);
+		txtcpf.setFont(new Font("Arial", Font.BOLD, 14));
 		txtcpf.setEnabled(false);
 		txtcpf.setBounds(93, 39, 105, 20);
 		contentPane.add(txtcpf);
 		txtcpf.setColumns(10);
+	}
+	
+	private void preencherInformacoes(){
+		
+		InterfaceFuncionario ifunc;
+		ifunc = new FuncionarioDAO();
+		Funcionario funcionario = ifunc.getFuncionario(cpf);
+		
+		
 	}
 
 }

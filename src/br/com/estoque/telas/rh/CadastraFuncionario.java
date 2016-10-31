@@ -33,6 +33,7 @@ import br.com.estoque.model.Funcionario;
 import br.com.estoque.model.Permissao;
 import br.com.estoque.negocio.InterfaceCargo;
 import br.com.estoque.negocio.InterfaceFuncionario;
+import br.com.estoque.utils.ExcecaoCampoVazio;
 import br.com.estoque.utils.FixedLenghtDocument;
 import br.com.estoque.utils.IeValidator;
 
@@ -102,7 +103,7 @@ public class CadastraFuncionario extends JFrame {
 		separator.setBounds(15, 71, 810, 2);
 		
 		JLabel lblCadastroDeFuncionrios = new JLabel("Cadastro de Funcion\u00E1rios");
-		lblCadastroDeFuncionrios.setBounds(261, 16, 420, 44);
+		lblCadastroDeFuncionrios.setBounds(220, 16, 420, 44);
 		lblCadastroDeFuncionrios.setFont(new Font("Times New Roman", Font.BOLD, 38));
 		
 		MaskFormatter mascaraData = null;
@@ -200,13 +201,18 @@ public class CadastraFuncionario extends JFrame {
 				ifunc = new FuncionarioDAO();
 				
 				try{
+					String cpf = txtcpf.getText().replace(".", "").replace("-", "");
+					String data = txtdatanasc.getText().replace("/", "").replace("_", ""); 
+					if(cpf.equals("")|| data.equals("")){
+						throw new ExcecaoCampoVazio();
+					}
 					Funcionario funcionario = new Funcionario();
 					Cargo cargo = new Cargo();
 					int c = cbcargo.getSelectedIndex()+1;
 					cargo.setId(c);
 					funcionario.setCargo(cargo);
 					funcionario.setComplemento(txtcomplemento.getText());
-					funcionario.setCpf(txtcpf.getText().replace(".", "").replace("-", ""));
+					funcionario.setCpf(cpf);
 					funcionario.setDataNasc(format.parse(txtdatanasc.getText()));
 					funcionario.setLogin(txtlogin.getText());
 					funcionario.setLogradouro(txtlogradouro.getText());
@@ -251,8 +257,11 @@ public class CadastraFuncionario extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "Sucesso","Usuário inserido com sucesso!",JOptionPane.INFORMATION_MESSAGE);
 				}
-				catch(Exception e){
+				catch(ParseException e){
 					Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
+				}
+				catch(ExcecaoCampoVazio e1){
+					JOptionPane.showMessageDialog(null,e1.getMessage(), "Erro",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -308,7 +317,7 @@ public class CadastraFuncionario extends JFrame {
 	        } catch (Exception ex) {
 	            Logger.getLogger(Cargo.class.getName()).log(Level.SEVERE, null, ex);
 	        }
-	}
+	 	}
 	
 	private void limpar(){
 		txtcomplemento.setText("");
