@@ -2,6 +2,7 @@ package br.com.estoque.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -28,10 +29,19 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Funcionario> list() {
+	public List<Funcionario> list(String cpf,String nome) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Funcionario> lista = session.createQuery("from Funcionario").list();
+		Query query;
+		if(cpf.equals("") && nome.equals("")){
+			query = session.createQuery("from Funcionario");
+		}
+		else{
+			query = session.createQuery("from Funcionario where cpf = :cpf or nome = :nome ");
+			query.setParameter("cpf", cpf);
+			query.setParameter("nome", nome);
+		}
+		List<Funcionario> lista = query.list();
 		t.commit();
 		return lista;
 	}

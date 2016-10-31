@@ -247,6 +247,7 @@ public class CadastraFuncionario extends JFrame {
 					}
 					funcionario.setPermissao(permissao);
 					ifunc.save(funcionario);
+					limpar();
 					
 					JOptionPane.showMessageDialog(null, "Sucesso","Usuário inserido com sucesso!",JOptionPane.INFORMATION_MESSAGE);
 				}

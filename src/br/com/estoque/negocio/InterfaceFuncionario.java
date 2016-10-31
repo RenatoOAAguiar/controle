@@ -10,7 +10,7 @@ public interface InterfaceFuncionario {
 
 	public Funcionario getFuncionario(long id);
 
-	public List<Funcionario> list();
+	public List<Funcionario> list(String cpf, String nome);
 
 	public void remove(Funcionario funcionario);
 
