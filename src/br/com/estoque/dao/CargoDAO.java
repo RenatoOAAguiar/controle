@@ -21,7 +21,7 @@ public class CargoDAO implements InterfaceCargo{
 	public List<Cargo> list() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Cargo> lista = session.createQuery("from Cargo").list();
+		List<Cargo> lista = session.createQuery("from Cargo order by id").list();
 		t.commit();
 		return lista;
 	}

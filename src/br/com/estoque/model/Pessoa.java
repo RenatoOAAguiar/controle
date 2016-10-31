@@ -2,6 +2,7 @@ package br.com.estoque.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -32,6 +33,9 @@ public abstract class Pessoa implements Serializable {
 
 	@Column
 	private String setor;
+
+	@Column(nullable = true)
+	private String complemento;
 
 	@Column
 	private int numero;
@@ -82,6 +86,14 @@ public abstract class Pessoa implements Serializable {
 
 	public void setSetor(String setor) {
 		this.setor = setor;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	public int getNumero() {
