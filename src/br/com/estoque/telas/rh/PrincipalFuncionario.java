@@ -21,6 +21,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+@SuppressWarnings("serial")
 public class PrincipalFuncionario extends JFrame {
 
 	private JPanel contentPane;
