@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,7 +42,7 @@ public class AlteraFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AlteraFuncionario(String cpf) {
+	public AlteraFuncionario(final String cpf) {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {

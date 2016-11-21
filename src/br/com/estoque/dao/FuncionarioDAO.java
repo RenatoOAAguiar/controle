@@ -26,6 +26,20 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		return (Funcionario) session.load(Funcionario.class, cpf);
 	}
+	
+	@Override
+	public Funcionario login(String login, String senha) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		Query query;
+		query = session.createQuery("from Funcionario where login = :login and senha = :senha ");
+		query.setParameter("login", login);
+		query.setParameter("senha", senha);
+		
+		Funcionario funcionario = (Funcionario) query.uniqueResult();
+		t.commit();
+		return funcionario;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

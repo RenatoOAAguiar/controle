@@ -9,6 +9,8 @@ public interface InterfaceFuncionario {
 	public void save(Funcionario funcionario);
 
 	public Funcionario getFuncionario(String cpf);
+	
+	public Funcionario login(String login, String senha);
 
 	public List<Funcionario> list(String cpf, String nome);
 

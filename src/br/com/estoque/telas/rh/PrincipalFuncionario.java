@@ -211,7 +211,6 @@ public class PrincipalFuncionario extends JFrame {
 		});
 	}
 
-	@SuppressWarnings("deprecation")
 	protected void preencheTable() {
 
 		InterfaceFuncionario ifunc;

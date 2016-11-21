@@ -13,11 +13,17 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+
+import br.com.estoque.dao.FuncionarioDAO;
+import br.com.estoque.model.Funcionario;
+import br.com.estoque.negocio.InterfaceFuncionario;
+import br.com.estoque.utils.ExcecaoLoginIncorreto;
 
 public class Login extends JFrame {
 
@@ -78,9 +84,29 @@ public class Login extends JFrame {
 		});
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				try{
+					
+				String login = txtusuario.getText();
+				String senha = String.valueOf(txtsenha.getPassword());
+				InterfaceFuncionario ifunc;
+				ifunc = new FuncionarioDAO();
+				Funcionario funcionario = ifunc.login(login, senha);
+				if(funcionario == null){
+					throw new ExcecaoLoginIncorreto();
+				}
+				
+				JOptionPane.showMessageDialog(null, "Usuário logado!\nBem vindo: " + funcionario.getNome());
 				Principal p = new Principal();
 				p.setVisible(true);
 				setVisible(false);
+				}
+				catch(RuntimeException e){
+				
+				}
+				catch(ExcecaoLoginIncorreto e1){
+					JOptionPane.showMessageDialog(null,e1.getMessage(), "Erro",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		
