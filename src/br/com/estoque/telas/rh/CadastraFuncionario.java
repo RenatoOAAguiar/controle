@@ -52,7 +52,8 @@ public class CadastraFuncionario extends JFrame {
 	private JFormattedTextField txtcpf;
 	private JFormattedTextField txtdatanasc;
 	private JComboBox<String> cbcargo;
-
+	private int i;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -255,7 +256,7 @@ public class CadastraFuncionario extends JFrame {
 					ifunc.save(funcionario);
 					limpar();
 					
-					JOptionPane.showMessageDialog(null, "Sucesso","Usuário inserido com sucesso!",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Sucesso","Usuï¿½rio inserido com sucesso!",JOptionPane.INFORMATION_MESSAGE);
 				}
 				catch(ParseException e){
 					Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
