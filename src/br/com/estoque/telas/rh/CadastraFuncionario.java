@@ -26,6 +26,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.MaskFormatter;
 
+import org.hibernate.exception.ConstraintViolationException;
+
 import br.com.estoque.dao.CargoDAO;
 import br.com.estoque.dao.FuncionarioDAO;
 import br.com.estoque.model.Cargo;
@@ -52,7 +54,7 @@ public class CadastraFuncionario extends JFrame {
 	private JFormattedTextField txtcpf;
 	private JFormattedTextField txtdatanasc;
 	private JComboBox<String> cbcargo;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -87,8 +89,7 @@ public class CadastraFuncionario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
-		
-		
+
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(15, 16, 77, 23);
 		btnVoltar.addActionListener(new ActionListener() {
@@ -98,14 +99,14 @@ public class CadastraFuncionario extends JFrame {
 				p.setVisible(true);
 			}
 		});
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(15, 71, 810, 2);
-		
+
 		JLabel lblCadastroDeFuncionrios = new JLabel("Cadastro de Funcion\u00E1rios");
 		lblCadastroDeFuncionrios.setBounds(220, 16, 420, 44);
 		lblCadastroDeFuncionrios.setFont(new Font("Times New Roman", Font.BOLD, 38));
-		
+
 		MaskFormatter mascaraData = null;
 		MaskFormatter mascaraCpf = null;
 		try {
@@ -116,99 +117,98 @@ public class CadastraFuncionario extends JFrame {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(15, 107, 53, 14);
-		
+
 		txtnome = new JTextField();
 		txtnome.setBounds(102, 104, 101, 20);
 		txtnome.setColumns(10);
-		
+
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
 		lblSobrenome.setBounds(15, 148, 77, 14);
-		
+
 		txtsobrenome = new JTextField();
 		txtsobrenome.setBounds(102, 145, 159, 20);
 		txtsobrenome.setColumns(10);
-		
+
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setBounds(15, 186, 53, 14);
-		
+
 		txtcpf = new JFormattedTextField(mascaraCpf);
 		txtcpf.setBounds(102, 183, 101, 20);
-		
+
 		JLabel lblDataNasc = new JLabel("Data Nasc:");
 		lblDataNasc.setBounds(15, 227, 77, 14);
-		
+
 		txtdatanasc = new JFormattedTextField(mascaraData);
 		txtdatanasc.setBounds(102, 224, 77, 20);
-		
+
 		JLabel lblLogin = new JLabel("Login:");
 		lblLogin.setBounds(15, 268, 63, 14);
-		
+
 		txtlogin = new JTextField();
 		txtlogin.setBounds(102, 265, 86, 20);
 		txtlogin.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setBounds(15, 301, 63, 14);
-		
+
 		txtsenha = new JPasswordField();
 		txtsenha.setBounds(102, 296, 105, 20);
-		
+
 		JLabel lblLogradouro = new JLabel("Logradouro:");
 		lblLogradouro.setBounds(419, 107, 80, 14);
-		
+
 		txtlogradouro = new JTextField();
 		txtlogradouro.setBounds(530, 102, 151, 20);
 		txtlogradouro.setColumns(10);
-		
+
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setBounds(419, 145, 69, 14);
-		
+
 		txtnumero = new JTextField();
 		txtnumero.setBounds(530, 140, 86, 20);
 		txtnumero.setColumns(10);
-		((AbstractDocument)txtnumero.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
-		((AbstractDocument)txtnumero.getDocument()).setDocumentFilter(new IeValidator(5));
-		
+		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
+		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new IeValidator(5));
+
 		JLabel lblComplemento = new JLabel("Complemento:");
 		lblComplemento.setBounds(419, 189, 101, 14);
-		
+
 		txtcomplemento = new JTextField();
 		txtcomplemento.setBounds(530, 184, 86, 20);
 		txtcomplemento.setColumns(10);
-		
+
 		JLabel lblSetor = new JLabel("Setor:");
 		lblSetor.setBounds(419, 227, 53, 14);
-		
+
 		txtsetor = new JTextField();
 		txtsetor.setBounds(530, 222, 86, 20);
 		txtsetor.setColumns(10);
-		
+
 		JLabel lblCargo = new JLabel("Cargo:");
 		lblCargo.setBounds(419, 262, 53, 14);
-		
+
 		cbcargo = new JComboBox<String>();
 		cbcargo.setBounds(530, 260, 137, 22);
-		
+
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 				InterfaceFuncionario ifunc;
 				ifunc = new FuncionarioDAO();
-				
-				try{
+
+				try {
 					String cpf = txtcpf.getText().replace(".", "").replace("-", "");
-					String data = txtdatanasc.getText().replace("/", "").replace("_", ""); 
-					if(cpf.equals("")|| data.equals("")){
+					String data = txtdatanasc.getText().replace("/", "").replace("_", "");
+					if (cpf.equals("") || data.equals("")) {
 						throw new ExcecaoCampoVazio();
 					}
 					Funcionario funcionario = new Funcionario();
 					Cargo cargo = new Cargo();
-					int c = cbcargo.getSelectedIndex()+1;
+					int c = cbcargo.getSelectedIndex() + 1;
 					cargo.setId(c);
 					funcionario.setCargo(cargo);
 					funcionario.setComplemento(txtcomplemento.getText());
@@ -221,36 +221,35 @@ public class CadastraFuncionario extends JFrame {
 					funcionario.setSenha(String.valueOf(txtsenha.getPassword()));
 					funcionario.setSetor(txtsetor.getText());
 					funcionario.setSobrenome(txtsobrenome.getText());
-					
+
 					Permissao permissao = new Permissao();
-					
-					
-					switch(c){
-					case 1:{
+
+					switch (c) {
+					case 1: {
 						permissao.setId(1);
 						break;
 					}
-					case 2:{
+					case 2: {
 						permissao.setId(4);
 						break;
 					}
-					case 3:{
+					case 3: {
 						permissao.setId(2);
 						break;
 					}
-					case 4:{
+					case 4: {
 						permissao.setId(5);
 						break;
 					}
-					case 5:{
+					case 5: {
 						permissao.setId(5);
 						break;
 					}
-					case 6:{
+					case 6: {
 						permissao.setId(6);
 						break;
 					}
-					default:{
+					default: {
 						permissao.setId(3);
 						break;
 					}
@@ -258,19 +257,21 @@ public class CadastraFuncionario extends JFrame {
 					funcionario.setPermissao(permissao);
 					ifunc.save(funcionario);
 					limpar();
-					
-					JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-				}
-				catch(ParseException e){
+
+					JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso!", "Sucesso",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (ConstraintViolationException eH) {
+					JOptionPane.showMessageDialog(null, "CPF digitado já existe!", "Erro de violação",
+							JOptionPane.ERROR_MESSAGE);
+				} catch (ParseException e) {
 					Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
-				}
-				catch(ExcecaoCampoVazio e1){
-					JOptionPane.showMessageDialog(null,e1.getMessage(), "Erro",JOptionPane.ERROR_MESSAGE);
+				} catch (ExcecaoCampoVazio e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		btnCadastrar.setBounds(181, 394, 105, 23);
-		
+
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.setBounds(479, 394, 105, 23);
 		btnLimpar.addActionListener(new ActionListener() {
@@ -307,23 +308,23 @@ public class CadastraFuncionario extends JFrame {
 		contentPane.add(cbcargo);
 		contentPane.add(txtsetor);
 	}
-	
-	public void PreencherCombo(){
-	    InterfaceCargo icargo;
-	    icargo = new CargoDAO();
-	    List<Cargo> listaCargo = icargo.list();
-	    int i;    
-	    
-	    try {
-	            for(i =0; i<listaCargo.size();i++){
-	                cbcargo.addItem(listaCargo.get(i).getNome());
-	            }
-	        } catch (Exception ex) {
-	            Logger.getLogger(Cargo.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	 	}
-	
-	private void limpar(){
+
+	public void PreencherCombo() {
+		InterfaceCargo icargo;
+		icargo = new CargoDAO();
+		List<Cargo> listaCargo = icargo.list();
+		int i;
+
+		try {
+			for (i = 0; i < listaCargo.size(); i++) {
+				cbcargo.addItem(listaCargo.get(i).getNome());
+			}
+		} catch (Exception ex) {
+			Logger.getLogger(Cargo.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	private void limpar() {
 		txtcomplemento.setText("");
 		txtlogin.setText("");
 		txtlogradouro.setText("");
@@ -336,6 +337,6 @@ public class CadastraFuncionario extends JFrame {
 		txtnumero.setText("");
 		txtcpf.setText("");
 		cbcargo.setSelectedIndex(-1);
-		
+
 	}
 }

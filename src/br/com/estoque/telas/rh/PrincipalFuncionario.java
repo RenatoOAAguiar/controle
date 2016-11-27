@@ -123,6 +123,8 @@ public class PrincipalFuncionario extends JFrame {
 		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
+				cpf = table.getValueAt(table.getSelectedRow(), 1).toString();
 				AlteraFuncionario a = new AlteraFuncionario(cpf.replace(".", "").replace("-", ""));
 				setVisible(false);
 				a.setVisible(true);
@@ -132,17 +134,20 @@ public class PrincipalFuncionario extends JFrame {
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-				InterfaceFuncionario ifunc;
-				ifunc = new FuncionarioDAO();
-				Funcionario funcionario = new Funcionario();
-				funcionario.setCpf(cpf.replaceAll(".", "").replaceAll("-", ""));
-				ifunc.remove(funcionario);
-				JOptionPane.showMessageDialog(null, "Registro Excluído com sucesso!", "Sucesso", JOptionPane.OK_OPTION);
-				}
-				catch(Exception e3){
+
+				cpf = table.getValueAt(table.getSelectedRow(), 1).toString();
+				try {
+					InterfaceFuncionario ifunc;
+					ifunc = new FuncionarioDAO();
+					Funcionario funcionario = new Funcionario();
+					funcionario.setCpf(cpf.replace(".", "").replace("-", ""));
+					ifunc.remove(funcionario);
+				} catch (Exception e3) {
 					e3.printStackTrace();
 				}
+
+				JOptionPane.showMessageDialog(null, "Registro Excluído com sucesso!", "Sucesso", JOptionPane.OK_OPTION);
+				preencheTable();
 			}
 		});
 
@@ -222,7 +227,6 @@ public class PrincipalFuncionario extends JFrame {
 			public void valueChanged(ListSelectionEvent event) {
 				btnAlterar.setVisible(true);
 				btnExcluir.setVisible(true);
-				cpf = table.getValueAt(table.getSelectedRow(), 1).toString();
 			}
 		});
 	}
@@ -234,7 +238,7 @@ public class PrincipalFuncionario extends JFrame {
 		ifunc = new FuncionarioDAO();
 		String cpf = txtcpf.getText().replace(".", "").replace("-", "").replace("_", "");
 		String nome = txtnome.getText();
-		List<Funcionario> listaFuncionario;
+		List<Funcionario> listaFuncionario = null;
 		Mascaras masc = new Mascaras();
 		int i;
 
@@ -246,10 +250,9 @@ public class PrincipalFuncionario extends JFrame {
 			listaFuncionario = ifunc.list(cpf, nome);
 
 			for (i = 0; i < listaFuncionario.size(); i++) {
-				modelo.addRow(new String[] { 
-						listaFuncionario.get(i).getNome(),
+				modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
 						masc.mascaraCPF(listaFuncionario.get(i).getCpf()),
-						listaFuncionario.get(i).getDataNasc().toLocaleString().substring(0,10),
+						listaFuncionario.get(i).getDataNasc().toLocaleString().substring(0, 10),
 						listaFuncionario.get(i).getCargo().getNome() });
 			}
 

@@ -28,7 +28,7 @@ public abstract class Pessoa implements Serializable {
 	@Column
 	private String logradouro;
 
-	@Column
+	@Column(unique=true)
 	private String cpf;
 
 	@Column

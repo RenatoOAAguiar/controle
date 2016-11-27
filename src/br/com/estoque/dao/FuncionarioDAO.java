@@ -71,9 +71,8 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 	public void remove(Funcionario funcionario) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.delete(funcionario);
+		session.delete(getFuncionario(funcionario.getCpf()));
 		t.commit();
-		
 	}
 
 	@Override
