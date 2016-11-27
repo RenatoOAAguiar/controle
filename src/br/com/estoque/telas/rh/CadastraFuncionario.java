@@ -52,7 +52,6 @@ public class CadastraFuncionario extends JFrame {
 	private JFormattedTextField txtcpf;
 	private JFormattedTextField txtdatanasc;
 	private JComboBox<String> cbcargo;
-	private int i;
 	
 	/**
 	 * Launch the application.
@@ -228,19 +227,19 @@ public class CadastraFuncionario extends JFrame {
 					
 					switch(c){
 					case 1:{
-						permissao.setId(3);
+						permissao.setId(1);
 						break;
 					}
 					case 2:{
-						permissao.setId(7);
+						permissao.setId(4);
 						break;
 					}
 					case 3:{
-						permissao.setId(6);
+						permissao.setId(2);
 						break;
 					}
 					case 4:{
-						permissao.setId(7);
+						permissao.setId(5);
 						break;
 					}
 					case 5:{
@@ -248,7 +247,11 @@ public class CadastraFuncionario extends JFrame {
 						break;
 					}
 					case 6:{
-						permissao.setId(4);
+						permissao.setId(6);
+						break;
+					}
+					default:{
+						permissao.setId(3);
 						break;
 					}
 					}
@@ -256,7 +259,7 @@ public class CadastraFuncionario extends JFrame {
 					ifunc.save(funcionario);
 					limpar();
 					
-					JOptionPane.showMessageDialog(null, "Sucesso","Usuï¿½rio inserido com sucesso!",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso!","Sucesso",JOptionPane.INFORMATION_MESSAGE);
 				}
 				catch(ParseException e){
 					Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
@@ -333,9 +336,6 @@ public class CadastraFuncionario extends JFrame {
 		txtnumero.setText("");
 		txtcpf.setText("");
 		cbcargo.setSelectedIndex(-1);
-		
-	}
-	private void validarCampos(){
 		
 	}
 }

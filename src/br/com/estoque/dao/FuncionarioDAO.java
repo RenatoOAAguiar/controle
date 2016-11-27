@@ -24,7 +24,14 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 	@Override
 	public Funcionario getFuncionario(String cpf) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (Funcionario) session.load(Funcionario.class, cpf);
+		Transaction t = session.beginTransaction();
+		Query query;
+		query = session.createQuery("from Funcionario where cpf = :cpf");
+		query.setParameter("cpf", cpf);
+		
+		Funcionario funcionario = (Funcionario) query.uniqueResult();
+		t.commit();
+		return funcionario;
 	}
 	
 	@Override

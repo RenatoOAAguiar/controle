@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -122,13 +123,28 @@ public class PrincipalFuncionario extends JFrame {
 		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AlteraFuncionario a = new AlteraFuncionario(cpf);
+				AlteraFuncionario a = new AlteraFuncionario(cpf.replace(".", "").replace("-", ""));
 				setVisible(false);
 				a.setVisible(true);
 			}
 		});
 
 		btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+				InterfaceFuncionario ifunc;
+				ifunc = new FuncionarioDAO();
+				Funcionario funcionario = new Funcionario();
+				funcionario.setCpf(cpf.replaceAll(".", "").replaceAll("-", ""));
+				ifunc.remove(funcionario);
+				JOptionPane.showMessageDialog(null, "Registro Excluído com sucesso!", "Sucesso", JOptionPane.OK_OPTION);
+				}
+				catch(Exception e3){
+					e3.printStackTrace();
+				}
+			}
+		});
 
 		JScrollPane scrollPane = new JScrollPane();
 
@@ -211,6 +227,7 @@ public class PrincipalFuncionario extends JFrame {
 		});
 	}
 
+	@SuppressWarnings("deprecation")
 	protected void preencheTable() {
 
 		InterfaceFuncionario ifunc;
@@ -229,9 +246,10 @@ public class PrincipalFuncionario extends JFrame {
 			listaFuncionario = ifunc.list(cpf, nome);
 
 			for (i = 0; i < listaFuncionario.size(); i++) {
-				modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
+				modelo.addRow(new String[] { 
+						listaFuncionario.get(i).getNome(),
 						masc.mascaraCPF(listaFuncionario.get(i).getCpf()),
-						listaFuncionario.get(i).getDataNasc().toString(),
+						listaFuncionario.get(i).getDataNasc().toLocaleString().substring(0,10),
 						listaFuncionario.get(i).getCargo().getNome() });
 			}
 
