@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -59,11 +60,13 @@ public class Login extends JFrame {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
+		
+		ImageIcon icon = new ImageIcon("imagens/login.png");
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio:");
 		lblUsurio.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -118,6 +121,8 @@ public class Login extends JFrame {
 				txtusuario.setText("");
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel(icon);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -135,13 +140,16 @@ public class Login extends JFrame {
 							.addGap(27)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(txtsenha)
-								.addComponent(txtusuario, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
-					.addContainerGap(135, Short.MAX_VALUE))
+								.addComponent(txtusuario, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+								.addComponent(lblNewLabel))))
+					.addContainerGap(137, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(82)
+					.addGap(25)
+					.addComponent(lblNewLabel)
+					.addGap(43)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsurio, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtusuario, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
@@ -153,7 +161,7 @@ public class Login extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnLogar)
 						.addComponent(btnLimpar))
-					.addContainerGap(34, Short.MAX_VALUE))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

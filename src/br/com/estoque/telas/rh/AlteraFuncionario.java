@@ -316,15 +316,13 @@ public class AlteraFuncionario extends JFrame {
 	
 	private void limpar(){
 		txtcomplemento.setText("");
-		txtlogin.setText("");
 		txtlogradouro.setText("");
 		txtnome.setText("");
 		txtdataNasc.setText("");
-		txtnumero.setText("");
+		txtnumero.setText("0");
 		txtsetor.setText("");
 		txtsobrenome.setText("");
 		txtnumero.setText("");
-		txtcpf.setText("");
 		cbcargo.setSelectedIndex(-1);
 		
 	}
