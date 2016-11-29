@@ -1,2 +1,1 @@
-# Projeto desenvolvido para a matéria:
-# Programação Orientada a Objetos
+# Projeto desenvolvido para a matéria: Programação Orientada a Objetos
