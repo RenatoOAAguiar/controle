@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -33,6 +35,13 @@ import br.com.estoque.model.Funcionario;
 import br.com.estoque.negocio.InterfaceFuncionario;
 import br.com.estoque.telas.Principal;
 import br.com.estoque.utils.Mascaras;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 @SuppressWarnings("serial")
 public class PrincipalFuncionario extends JFrame {
@@ -46,6 +55,7 @@ public class PrincipalFuncionario extends JFrame {
 	private JButton btnGerarRelatorio;
 	private String cpf;
 	private DefaultTableModel modelo;
+	private List<Funcionario> dados;
 
 	/**
 	 * Launch the application.
@@ -166,6 +176,22 @@ public class PrincipalFuncionario extends JFrame {
 		});
 		
 		btnGerarRelatorio = new JButton("Gerar Relat\u00F3rio");
+		btnGerarRelatorio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					geraRelatorio();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -273,6 +299,7 @@ public class PrincipalFuncionario extends JFrame {
 		try {
 			modelo.setColumnIdentifiers(columnNames);
 			listaFuncionario = ifunc.list(cpf, nome);
+			dados = listaFuncionario;
 
 			for (i = 0; i < listaFuncionario.size(); i++) {
 				modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
@@ -287,4 +314,11 @@ public class PrincipalFuncionario extends JFrame {
 		}
 
 	}
+	private void geraRelatorio() throws JRException, SQLException, ClassNotFoundException {
+        InputStream arquivo= this.getClass().getResourceAsStream("/br/com/estoque/relatorios/relatorioFuncionario.jrxml");
+        JasperReport jr = JasperCompileManager.compileReport(arquivo);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(dados));
+        JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+        jrviewer.setVisible(true);
+    }
 }
