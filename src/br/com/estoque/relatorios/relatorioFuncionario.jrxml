@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioFuncionario" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a92981b-55fe-4027-a2d4-de641a71a6c2">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="151"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from estoque.funcionario]]>
 	</queryString>
-	<field name="id" class="java.lang.String"/>
-	<field name="nome" class="java.lang.String"/>
-	<field name="sobrenome" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
 	<field name="cpf" class="java.lang.String"/>
-	<field name="dataNasc" class="java.lang.String"/>
+	<field name="dataNasc" class="java.sql.Date"/>
 	<field name="logradouro" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
 	<field name="setor" class="java.lang.String"/>
+	<field name="sobrenome" class="java.lang.String"/>
 	<field name="cargo.nome" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -152,9 +152,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="11" width="71" height="20" uuid="7f0b91af-2fd0-405f-8ca9-9a185e3afd14"/>
+				<reportElement x="0" y="0" width="71" height="20" uuid="7f0b91af-2fd0-405f-8ca9-9a185e3afd14"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -165,7 +165,7 @@
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="71" y="11" width="123" height="20" uuid="17d5bb09-bffd-4096-9130-f59fabb67b4f"/>
+				<reportElement x="71" y="0" width="123" height="20" uuid="17d5bb09-bffd-4096-9130-f59fabb67b4f"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -176,7 +176,7 @@
 				<textFieldExpression><![CDATA[$F{nome} +" "+ $F{sobrenome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="194" y="11" width="123" height="20" uuid="6db97a45-090e-4de1-8a1f-3ec6cb441925"/>
+				<reportElement x="194" y="0" width="123" height="20" uuid="6db97a45-090e-4de1-8a1f-3ec6cb441925"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -187,7 +187,7 @@
 				<textFieldExpression><![CDATA[($F{cpf}.substring(0, 3) + "." + $F{cpf}.substring(3, 6) + "." + $F{cpf}.substring(6, 9) + "-" + $F{cpf}.substring(9, 11))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="317" y="11" width="116" height="20" uuid="a9f14487-cbb0-427f-a63b-df8bd0a61645"/>
+				<reportElement x="317" y="0" width="116" height="20" uuid="a9f14487-cbb0-427f-a63b-df8bd0a61645"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -195,10 +195,10 @@
 					<bottomPen lineWidth="0.75"/>
 					<rightPen lineWidth="0.75"/>
 				</box>
-				<textFieldExpression><![CDATA[$F{dataNasc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataNasc})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="433" y="11" width="123" height="20" uuid="4b631423-2266-4393-8f00-32021f63913d"/>
+				<reportElement x="433" y="0" width="123" height="20" uuid="4b631423-2266-4393-8f00-32021f63913d"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -209,7 +209,7 @@
 				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="556" y="11" width="123" height="20" uuid="d37ed1a8-f2a4-4cd8-9c17-be9e342a337c"/>
+				<reportElement x="556" y="0" width="123" height="20" uuid="d37ed1a8-f2a4-4cd8-9c17-be9e342a337c"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -220,7 +220,7 @@
 				<textFieldExpression><![CDATA[$F{setor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="679" y="11" width="123" height="20" uuid="109b932b-1ae6-4ced-9d8f-c4ff961935eb"/>
+				<reportElement x="679" y="0" width="123" height="20" uuid="3308e65f-cb19-47f6-9d6c-ee162c2f6a28"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>

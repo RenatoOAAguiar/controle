@@ -110,7 +110,7 @@ public class PrincipalFuncionario extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Principal p = new Principal();
+				Principal p = new Principal(0);
 				setVisible(false);
 				p.setVisible(true);
 			}
@@ -129,7 +129,6 @@ public class PrincipalFuncionario extends JFrame {
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				preencheTable();
-				btnGerarRelatorio.setVisible(true);
 			}
 		});
 
@@ -181,13 +180,10 @@ public class PrincipalFuncionario extends JFrame {
 				try {
 					geraRelatorio();
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (JRException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -299,18 +295,22 @@ public class PrincipalFuncionario extends JFrame {
 		try {
 			modelo.setColumnIdentifiers(columnNames);
 			listaFuncionario = ifunc.list(cpf, nome);
-			dados = listaFuncionario;
-
-			for (i = 0; i < listaFuncionario.size(); i++) {
-				modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
-						masc.mascaraCPF(listaFuncionario.get(i).getCpf()),
-						listaFuncionario.get(i).getDataNasc().toLocaleString().substring(0, 10),
-						listaFuncionario.get(i).getCargo().getNome() });
+			if(listaFuncionario.size() > 0){
+				for (i = 0; i < listaFuncionario.size(); i++) {
+					modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
+							masc.mascaraCPF(listaFuncionario.get(i).getCpf()),
+							listaFuncionario.get(i).getDataNasc().toLocaleString().substring(0, 10),
+							listaFuncionario.get(i).getCargo().getNome() });
+				}
+				table.setModel(modelo);
+				dados = listaFuncionario;
+				btnGerarRelatorio.setVisible(true);
 			}
-
-			table.setModel(modelo);
+			else{
+				JOptionPane.showMessageDialog(null,"Resultado não encontrado para a consulta!" ,"Atenção!",JOptionPane.INFORMATION_MESSAGE);
+			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}

@@ -1,5 +1,7 @@
 package br.com.estoque.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Funcionario", schema = "estoque")
@@ -35,6 +39,10 @@ public class Funcionario extends Pessoa {
 
 	@Column
 	private String senha;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column
+	private Date dataContratacao;
 
 	@Column
 	private String login;
@@ -87,6 +95,14 @@ public class Funcionario extends Pessoa {
 
 	public static void setPermissaoLogar(int permissaoLogar) {
 		Funcionario.permissaoLogar = permissaoLogar;
+	}
+
+	public Date getDataContratacao() {
+		return dataContratacao;
+	}
+
+	public void setDataContratacao(Date dataContratacao) {
+		this.dataContratacao = dataContratacao;
 	}
 
 }

@@ -100,7 +100,7 @@ public class Login extends JFrame {
 				}
 				
 				JOptionPane.showMessageDialog(null, "Usuário logado!\nBem vindo: " + funcionario.getNome());
-				Principal p = new Principal();
+				Principal p = new Principal(funcionario.getPermissao().getId());
 				p.setVisible(true);
 				setVisible(false);
 				}

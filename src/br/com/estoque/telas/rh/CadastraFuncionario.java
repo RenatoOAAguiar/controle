@@ -53,6 +53,8 @@ public class CadastraFuncionario extends JFrame {
 	private JTextField txtsetor;
 	private JFormattedTextField txtcpf;
 	private JFormattedTextField txtdatanasc;
+	private JFormattedTextField txtcep;
+	private JFormattedTextField txtdatacontratacao;
 	private JComboBox<String> cbcargo;
 
 	/**
@@ -109,11 +111,14 @@ public class CadastraFuncionario extends JFrame {
 
 		MaskFormatter mascaraData = null;
 		MaskFormatter mascaraCpf = null;
+		MaskFormatter mascaraCep = null;
 		try {
 			mascaraData = new MaskFormatter("##/##/####");
 			mascaraData.setPlaceholderCharacter('_');
 			mascaraCpf = new MaskFormatter("###.###.###-##");
 			mascaraCpf.setPlaceholderCharacter('_');
+			mascaraCep = new MaskFormatter("#####-###");
+			mascaraCep.setPlaceholderCharacter('_');
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -158,40 +163,40 @@ public class CadastraFuncionario extends JFrame {
 		txtsenha.setBounds(102, 296, 105, 20);
 
 		JLabel lblLogradouro = new JLabel("Logradouro:");
-		lblLogradouro.setBounds(419, 107, 80, 14);
+		lblLogradouro.setBounds(421, 140, 80, 14);
 
 		txtlogradouro = new JTextField();
-		txtlogradouro.setBounds(530, 102, 151, 20);
+		txtlogradouro.setBounds(532, 135, 151, 20);
 		txtlogradouro.setColumns(10);
 
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
-		lblNmero.setBounds(419, 145, 69, 14);
+		lblNmero.setBounds(421, 178, 69, 14);
 
 		txtnumero = new JTextField();
-		txtnumero.setBounds(530, 140, 86, 20);
+		txtnumero.setBounds(532, 173, 86, 20);
 		txtnumero.setColumns(10);
 		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
 		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new IeValidator(5));
 
 		JLabel lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(419, 189, 101, 14);
+		lblComplemento.setBounds(421, 222, 101, 14);
 
 		txtcomplemento = new JTextField();
-		txtcomplemento.setBounds(530, 184, 86, 20);
+		txtcomplemento.setBounds(532, 217, 86, 20);
 		txtcomplemento.setColumns(10);
 
 		JLabel lblSetor = new JLabel("Setor:");
-		lblSetor.setBounds(419, 227, 53, 14);
+		lblSetor.setBounds(421, 260, 53, 14);
 
 		txtsetor = new JTextField();
-		txtsetor.setBounds(530, 222, 86, 20);
+		txtsetor.setBounds(532, 255, 86, 20);
 		txtsetor.setColumns(10);
 
 		JLabel lblCargo = new JLabel("Cargo:");
-		lblCargo.setBounds(419, 262, 53, 14);
+		lblCargo.setBounds(15, 333, 53, 14);
 
 		cbcargo = new JComboBox<String>();
-		cbcargo.setBounds(530, 260, 137, 22);
+		cbcargo.setBounds(102, 329, 137, 22);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -202,8 +207,11 @@ public class CadastraFuncionario extends JFrame {
 
 				try {
 					String cpf = txtcpf.getText().replace(".", "").replace("-", "");
-					String data = txtdatanasc.getText().replace("/", "").replace("_", "");
-					if (cpf.equals("") || data.equals("")) {
+					String dataNasc = txtdatanasc.getText().replace("/", "").replace("_", "");
+					String cep = txtcep.getText().replace("-", "");
+					
+					
+					if (cpf.equals("") || dataNasc.equals("")) {
 						throw new ExcecaoCampoVazio();
 					}
 					Funcionario funcionario = new Funcionario();
@@ -213,7 +221,9 @@ public class CadastraFuncionario extends JFrame {
 					funcionario.setCargo(cargo);
 					funcionario.setComplemento(txtcomplemento.getText());
 					funcionario.setCpf(cpf);
+					funcionario.setCep(cep);
 					funcionario.setDataNasc(format.parse(txtdatanasc.getText()));
+					funcionario.setDataContratacao(format.parse(txtdatacontratacao.getText()));
 					funcionario.setLogin(txtlogin.getText());
 					funcionario.setLogradouro(txtlogradouro.getText());
 					funcionario.setNome(txtnome.getText());
@@ -307,6 +317,22 @@ public class CadastraFuncionario extends JFrame {
 		contentPane.add(lblCargo);
 		contentPane.add(cbcargo);
 		contentPane.add(txtsetor);
+		
+		JLabel lblCep = new JLabel("CEP:");
+		lblCep.setBounds(421, 107, 46, 14);
+		contentPane.add(lblCep);
+		
+		txtcep = new JFormattedTextField(mascaraCep);
+		txtcep.setBounds(532, 104, 69, 20);
+		contentPane.add(txtcep);
+		
+		JLabel lblDataContratao = new JLabel("Data Contrata\u00E7\u00E3o:");
+		lblDataContratao.setBounds(421, 299, 101, 14);
+		contentPane.add(lblDataContratao);
+		
+		txtdatacontratacao = new JFormattedTextField(mascaraData);
+		txtdatacontratacao.setBounds(532, 296, 77, 20);
+		contentPane.add(txtdatacontratacao);
 	}
 
 	public void PreencherCombo() {
@@ -330,6 +356,8 @@ public class CadastraFuncionario extends JFrame {
 		txtlogradouro.setText("");
 		txtnome.setText("");
 		txtdatanasc.setText("");
+		txtdatacontratacao.setText("");
+		txtcep.setText("");
 		txtnumero.setText("");
 		txtsenha.setText("");
 		txtsetor.setText("");

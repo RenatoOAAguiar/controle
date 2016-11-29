@@ -25,11 +25,14 @@ public abstract class Pessoa implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataNasc;
 
-	@Column
-	private String logradouro;
-
 	@Column(unique=true)
 	private String cpf;
+	
+	@Column
+	private String cep;
+	
+	@Column
+	private String logradouro;
 
 	@Column
 	private String setor;
@@ -104,4 +107,12 @@ public abstract class Pessoa implements Serializable {
 		this.numero = numero;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
 }
