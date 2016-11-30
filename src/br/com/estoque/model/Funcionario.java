@@ -47,8 +47,6 @@ public class Funcionario extends Pessoa {
 	@Column
 	private String login;
 
-	private static int permissaoLogar;
-
 	public long getId() {
 		return id;
 	}
@@ -87,14 +85,6 @@ public class Funcionario extends Pessoa {
 
 	public void setLogin(String login) {
 		this.login = login;
-	}
-
-	public static int getPermissaoLogar() {
-		return permissaoLogar;
-	}
-
-	public static void setPermissaoLogar(int permissaoLogar) {
-		Funcionario.permissaoLogar = permissaoLogar;
 	}
 
 	public Date getDataContratacao() {

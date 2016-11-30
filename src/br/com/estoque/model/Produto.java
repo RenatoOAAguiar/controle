@@ -33,6 +33,9 @@ public class Produto {
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAlteracao = new Date();
+	
+	@Column
+	private double valor;
 
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "fornecedor_id")
@@ -68,6 +71,14 @@ public class Produto {
 
 	public void setDataAlteracao(Date dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
 	public Fornecedor getFornecedor() {
