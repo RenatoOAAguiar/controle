@@ -1,5 +1,6 @@
 package br.com.estoque.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Produto {
 
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao = new Date();
+	private Date dataAlteracao = new Timestamp(System.currentTimeMillis());
 	
 	@Column
 	private double valor;

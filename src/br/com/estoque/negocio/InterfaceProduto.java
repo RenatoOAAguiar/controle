@@ -10,7 +10,7 @@ public interface InterfaceProduto {
 
 	public Produto getProduto(long id);
 
-	public List<Produto> list();
+	public List<Produto> list(String nome, String fornecedor);
 
 	public void remove(Produto produto);
 

@@ -8,7 +8,7 @@ public interface InterfaceFornecedor {
 
 	public void save(Fornecedor fornecedor);
 
-	public Fornecedor getFornecedor(long id);
+	public Fornecedor getFornecedor(String nome);
 
 	public List<Fornecedor> list();
 

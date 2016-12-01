@@ -211,7 +211,9 @@ public class CadastraFuncionario extends JFrame {
 					String cep = txtcep.getText().replace("-", "");
 					
 					
-					if (cpf.equals("") || dataNasc.equals("")) {
+					if (cpf.equals("") || dataNasc.equals("") || txtdatacontratacao.getText().equals("") || txtlogin.getText().equals("")
+							|| txtsenha.getPassword().equals("") || txtdatanasc.getText().equals("") || txtnome.getText().equals("")
+							|| txtsobrenome.getText().equals("") || txtcep.getText().equals("")) {
 						throw new ExcecaoCampoVazio();
 					}
 					Funcionario funcionario = new Funcionario();

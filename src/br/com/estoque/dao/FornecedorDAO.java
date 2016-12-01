@@ -2,6 +2,7 @@ package br.com.estoque.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -21,9 +22,16 @@ public class FornecedorDAO implements InterfaceFornecedor{
 	}
 
 	@Override
-	public Fornecedor getFornecedor(long id) {
+	public Fornecedor getFornecedor(String nome) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (Fornecedor) session.load(Fornecedor.class, id);
+		Transaction t = session.beginTransaction();
+		Query query;
+		query = session.createQuery("from Fornecedor where nome = :nome");
+		query.setParameter("nome", nome);
+		
+		Fornecedor fornecedor = (Fornecedor) query.uniqueResult();
+		t.commit();
+		return fornecedor;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -31,7 +39,7 @@ public class FornecedorDAO implements InterfaceFornecedor{
 	public List<Fornecedor> list() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Fornecedor> lista = session.createQuery("from Fornecedor").list();
+		List<Fornecedor> lista = session.createQuery("from Fornecedor order by id").list();
 		t.commit();
 		return lista;
 	}
