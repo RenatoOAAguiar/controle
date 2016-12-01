@@ -9,7 +9,7 @@ import br.com.estoque.model.Cargo;
 import br.com.estoque.negocio.InterfaceCargo;
 import br.com.estoque.utils.HibernateUtil;
 
-public class CargoDAO implements InterfaceCargo{
+public class CargoDAO implements InterfaceCargo {
 	@Override
 	public Cargo getCargo(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();

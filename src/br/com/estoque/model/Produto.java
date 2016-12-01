@@ -25,17 +25,17 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column
+	@Column(length = 30, nullable = false)
 	private String nome;
 
-	@Column
+	@Column(length = 8, nullable = false)
 	private int quantidade;
 
-	@Column
+	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAlteracao = new Timestamp(System.currentTimeMillis());
 	
-	@Column
+	@Column(nullable = false)
 	private double valor;
 
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

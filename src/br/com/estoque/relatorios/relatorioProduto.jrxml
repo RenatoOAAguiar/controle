@@ -128,7 +128,7 @@
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data de Cadastro]]></text>
+				<text><![CDATA[Data de Alteração]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

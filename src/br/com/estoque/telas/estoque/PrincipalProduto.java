@@ -225,6 +225,10 @@ public class PrincipalProduto extends JFrame {
 		});
 	}
 	
+	/**
+	 * Método responsável por preencher a JTable
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	private void preencheTable() {
 
@@ -263,6 +267,14 @@ public class PrincipalProduto extends JFrame {
 		}
 
 	}
+	
+	/**
+	 * Método responsável por gerar o relátorio dos dados apresentados na JTable
+	 * 
+	 * @throws JRException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	private void geraRelatorio() throws JRException, SQLException, ClassNotFoundException {
         InputStream arquivo= this.getClass().getResourceAsStream("/br/com/estoque/relatorios/relatorioProduto.jrxml");
         JasperReport jr = JasperCompileManager.compileReport(arquivo);

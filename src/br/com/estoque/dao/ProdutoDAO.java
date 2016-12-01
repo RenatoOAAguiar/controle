@@ -11,7 +11,7 @@ import br.com.estoque.model.Produto;
 import br.com.estoque.negocio.InterfaceProduto;
 import br.com.estoque.utils.HibernateUtil;
 
-public class ProdutoDAO implements InterfaceProduto{
+public class ProdutoDAO implements InterfaceProduto {
 
 	@Override
 	public void save(Produto produto) {
@@ -19,13 +19,20 @@ public class ProdutoDAO implements InterfaceProduto{
 		Transaction t = session.beginTransaction();
 		session.save(produto);
 		t.commit();
-		
+
 	}
 
 	@Override
 	public Produto getProduto(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (Produto) session.load(Produto.class, id);
+		Transaction t = session.beginTransaction();
+		Query query;
+		query = session.createQuery("from Produto where id = :id");
+		query.setParameter("id", id);
+
+		Produto produto = (Produto) query.uniqueResult();
+		t.commit();
+		return produto;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -34,16 +41,15 @@ public class ProdutoDAO implements InterfaceProduto{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Query query;
-		if(nome.equals("") && fornecedor.equals("")){
+		if (nome.equals("") && fornecedor.equals("")) {
 			query = session.createQuery("from Produto");
-		}
-		else{
+		} else {
 			long id = 0L;
-			if(!fornecedor.equals("")){
+			if (!fornecedor.equals("")) {
 				FornecedorDAO f = new FornecedorDAO();
 				Fornecedor forn = new Fornecedor();
 				forn = f.getFornecedor(fornecedor);
-				id = forn != null? forn.getId(): 0L;
+				id = forn != null ? forn.getId() : 0L;
 			}
 			query = session.createQuery("from Produto where nome = :nome or fornecedor_id = :fornecedor ");
 			query.setParameter("nome", nome);
@@ -60,7 +66,7 @@ public class ProdutoDAO implements InterfaceProduto{
 		Transaction t = session.beginTransaction();
 		session.delete(produto);
 		t.commit();
-		
+
 	}
 
 	@Override

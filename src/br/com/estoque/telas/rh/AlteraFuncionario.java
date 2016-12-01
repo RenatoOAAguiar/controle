@@ -327,6 +327,10 @@ public class AlteraFuncionario extends JFrame {
 		contentPane.add(txtcep);
 	}
 
+	/**
+	 * Método responsável por preencher o combo de Cargos
+	 * 
+	 */
 	public void PreencherCombo() {
 		InterfaceCargo icargo;
 		icargo = new CargoDAO();
@@ -342,6 +346,10 @@ public class AlteraFuncionario extends JFrame {
 		}
 	}
 
+	/**
+	 * Método responsável por limpar os campos
+	 * 
+	 */
 	private void limpar() {
 		txtcomplemento.setText("");
 		txtlogradouro.setText("");
@@ -357,6 +365,11 @@ public class AlteraFuncionario extends JFrame {
 
 	}
 
+	/**
+	 * Método responsável por preencher informações nos campos
+	 * 
+	 * @param cpf
+	 */
 	@SuppressWarnings("deprecation")
 	private void preencherInformacoes(String cpf) {
 

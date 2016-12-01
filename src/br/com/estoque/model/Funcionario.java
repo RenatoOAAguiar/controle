@@ -37,14 +37,14 @@ public class Funcionario extends Pessoa {
 	@JoinColumn(name = "permissao_id")
 	private Permissao permissao;
 
-	@Column
+	@Column(length = 20, nullable = false)
 	private String senha;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column
+	@Column(nullable = false)
 	private Date dataContratacao;
 
-	@Column
+	@Column(length = 15, nullable = false)
 	private String login;
 
 	public long getId() {

@@ -209,10 +209,10 @@ public class CadastraFuncionario extends JFrame {
 					String cpf = txtcpf.getText().replace(".", "").replace("-", "");
 					String dataNasc = txtdatanasc.getText().replace("/", "").replace("_", "");
 					String cep = txtcep.getText().replace("-", "");
-					
-					
-					if (cpf.equals("") || dataNasc.equals("") || txtdatacontratacao.getText().equals("") || txtlogin.getText().equals("")
-							|| txtsenha.getPassword().equals("") || txtdatanasc.getText().equals("") || txtnome.getText().equals("")
+
+					if (cpf.equals("") || dataNasc.equals("") || txtdatacontratacao.getText().equals("")
+							|| txtlogin.getText().equals("") || txtsenha.getPassword().equals("")
+							|| txtdatanasc.getText().equals("") || txtnome.getText().equals("")
 							|| txtsobrenome.getText().equals("") || txtcep.getText().equals("")) {
 						throw new ExcecaoCampoVazio();
 					}
@@ -319,24 +319,28 @@ public class CadastraFuncionario extends JFrame {
 		contentPane.add(lblCargo);
 		contentPane.add(cbcargo);
 		contentPane.add(txtsetor);
-		
+
 		JLabel lblCep = new JLabel("CEP:");
 		lblCep.setBounds(421, 107, 46, 14);
 		contentPane.add(lblCep);
-		
+
 		txtcep = new JFormattedTextField(mascaraCep);
 		txtcep.setBounds(532, 104, 69, 20);
 		contentPane.add(txtcep);
-		
+
 		JLabel lblDataContratao = new JLabel("Data Contrata\u00E7\u00E3o:");
 		lblDataContratao.setBounds(421, 299, 101, 14);
 		contentPane.add(lblDataContratao);
-		
+
 		txtdatacontratacao = new JFormattedTextField(mascaraData);
 		txtdatacontratacao.setBounds(532, 296, 77, 20);
 		contentPane.add(txtdatacontratacao);
 	}
 
+	/**
+	 * Método responsável por preencher o combo de cargos
+	 * 
+	 */
 	public void PreencherCombo() {
 		InterfaceCargo icargo;
 		icargo = new CargoDAO();
@@ -352,6 +356,10 @@ public class CadastraFuncionario extends JFrame {
 		}
 	}
 
+	/**
+	 * Método responsável por limpar os campos
+	 * 
+	 */
 	private void limpar() {
 		txtcomplemento.setText("");
 		txtlogin.setText("");

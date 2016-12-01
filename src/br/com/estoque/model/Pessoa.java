@@ -16,31 +16,32 @@ public abstract class Pessoa implements Serializable {
 	 */
 	private static final long serialVersionUID = -1826201378042662885L;
 
-	@Column
+	@Column(length = 15, nullable = false)
 	private String nome;
 
-	@Column
+	@Column(length = 30, nullable = false)
 	private String sobrenome;
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
 	private Date dataNasc;
 
-	@Column(unique=true)
+	@Column(unique=true, nullable = false)
 	private String cpf;
 	
-	@Column
+	@Column(length = 10, nullable = false)
 	private String cep;
 	
-	@Column
+	@Column(length = 30, nullable = false)
 	private String logradouro;
 
-	@Column
+	@Column(length = 30, nullable = false)
 	private String setor;
 
 	@Column(nullable = true)
 	private String complemento;
 
-	@Column
+	@Column(length = 5, nullable = true)
 	private int numero;
 
 	public String getNome() {

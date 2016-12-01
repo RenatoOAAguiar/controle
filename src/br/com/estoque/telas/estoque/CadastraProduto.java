@@ -176,6 +176,10 @@ public class CadastraProduto extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * Método responsável por preencher o combo de Fornecedor
+	 * 
+	 */
 	public void PreencherCombo() {
 		InterfaceFornecedor ifornecedor;
 		ifornecedor = new FornecedorDAO();
@@ -191,6 +195,10 @@ public class CadastraProduto extends JFrame {
 		}
 	}
 
+	/**
+	 * Método responsável por limpar os campos
+	 * 
+	 */
 	private void limpar() {
 		txtnome.setText("");
 		txtquantidade.setText("");

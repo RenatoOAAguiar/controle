@@ -173,7 +173,7 @@ public class PrincipalFuncionario extends JFrame {
 				cad.setVisible(true);
 			}
 		});
-		
+
 		btnGerarRelatorio = new JButton("Gerar Relat\u00F3rio");
 		btnGerarRelatorio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -189,75 +189,56 @@ public class PrincipalFuncionario extends JFrame {
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addComponent(btnVoltar).addGap(98)
+										.addComponent(lblNewLabel).addContainerGap())
+								.addComponent(separator, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 812,
+										Short.MAX_VALUE)))
+				.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
+						.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(scrollPane,
+								GroupLayout.PREFERRED_SIZE, 753, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(112).addComponent(lblNome).addGap(27)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup().addComponent(btnConsultar)
+												.addGap(45).addComponent(btnAlterar).addGap(52)
+												.addComponent(btnExcluir))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(txtnome, GroupLayout.PREFERRED_SIZE, 109,
+														GroupLayout.PREFERRED_SIZE)
+												.addGap(45).addComponent(lblcpf)
+												.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+												.addComponent(txtcpf, GroupLayout.PREFERRED_SIZE, 132,
+														GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+												.addComponent(btnIncluir)))))
+						.addGap(23))
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap(670, Short.MAX_VALUE)
+						.addComponent(btnGerarRelatorio).addGap(61)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnVoltar)
-							.addGap(98)
-							.addComponent(lblNewLabel)
-							.addContainerGap())
-						.addComponent(separator, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 753, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(112)
-							.addComponent(lblNome)
-							.addGap(27)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnConsultar)
-									.addGap(45)
-									.addComponent(btnAlterar)
-									.addGap(52)
-									.addComponent(btnExcluir))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(txtnome, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-									.addGap(45)
-									.addComponent(lblcpf)
-									.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-									.addComponent(txtcpf, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-									.addComponent(btnIncluir)))))
-					.addGap(23))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(670, Short.MAX_VALUE)
-					.addComponent(btnGerarRelatorio)
-					.addGap(61))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(21)
-							.addComponent(btnVoltar))
-						.addComponent(lblNewLabel))
-					.addGap(17)
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNome)
-						.addComponent(txtnome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblcpf)
-						.addComponent(txtcpf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnIncluir))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnConsultar)
-						.addComponent(btnAlterar)
-						.addComponent(btnExcluir))
-					.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
-					.addGap(21)
-					.addComponent(btnGerarRelatorio)
-					.addContainerGap())
-		);
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(21).addComponent(btnVoltar))
+								.addComponent(lblNewLabel))
+						.addGap(17)
+						.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(lblNome)
+								.addComponent(txtnome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblcpf)
+								.addComponent(txtcpf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnIncluir))
+						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(btnConsultar)
+								.addComponent(btnAlterar).addComponent(btnExcluir))
+						.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
+						.addGap(21).addComponent(btnGerarRelatorio).addContainerGap()));
 		modelo = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -278,6 +259,10 @@ public class PrincipalFuncionario extends JFrame {
 		});
 	}
 
+	/**
+	 * Método responsável por apresentar os dados da consulta no JTable
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	protected void preencheTable() {
 
@@ -295,7 +280,7 @@ public class PrincipalFuncionario extends JFrame {
 		try {
 			modelo.setColumnIdentifiers(columnNames);
 			listaFuncionario = ifunc.list(cpf, nome);
-			if(listaFuncionario.size() > 0){
+			if (listaFuncionario.size() > 0) {
 				for (i = 0; i < listaFuncionario.size(); i++) {
 					modelo.addRow(new String[] { listaFuncionario.get(i).getNome(),
 							masc.mascaraCPF(listaFuncionario.get(i).getCpf()),
@@ -305,20 +290,29 @@ public class PrincipalFuncionario extends JFrame {
 				table.setModel(modelo);
 				dados = listaFuncionario;
 				btnGerarRelatorio.setVisible(true);
-			}
-			else{
-				JOptionPane.showMessageDialog(null,"Resultado não encontrado para a consulta!" ,"Atenção!",JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Resultado não encontrado para a consulta!", "Atenção!",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
+
+	/**
+	 * Método responsável por gerar o relátorio dos dados apresentados no JTable
+	 * 
+	 * @throws JRException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	private void geraRelatorio() throws JRException, SQLException, ClassNotFoundException {
-        InputStream arquivo= this.getClass().getResourceAsStream("/br/com/estoque/relatorios/relatorioFuncionario.jrxml");
-        JasperReport jr = JasperCompileManager.compileReport(arquivo);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(dados));
-        JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
-        jrviewer.setVisible(true);
-    }
+		InputStream arquivo = this.getClass()
+				.getResourceAsStream("/br/com/estoque/relatorios/relatorioFuncionario.jrxml");
+		JasperReport jr = JasperCompileManager.compileReport(arquivo);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jr, null, new JRBeanCollectionDataSource(dados));
+		JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+		jrviewer.setVisible(true);
+	}
 }

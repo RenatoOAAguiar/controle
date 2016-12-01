@@ -10,7 +10,7 @@ import br.com.estoque.model.Fornecedor;
 import br.com.estoque.negocio.InterfaceFornecedor;
 import br.com.estoque.utils.HibernateUtil;
 
-public class FornecedorDAO implements InterfaceFornecedor{
+public class FornecedorDAO implements InterfaceFornecedor {
 
 	@Override
 	public void save(Fornecedor fornecedor) {
@@ -18,7 +18,7 @@ public class FornecedorDAO implements InterfaceFornecedor{
 		Transaction t = session.beginTransaction();
 		session.save(fornecedor);
 		t.commit();
-		
+
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class FornecedorDAO implements InterfaceFornecedor{
 		Query query;
 		query = session.createQuery("from Fornecedor where nome = :nome");
 		query.setParameter("nome", nome);
-		
+
 		Fornecedor fornecedor = (Fornecedor) query.uniqueResult();
 		t.commit();
 		return fornecedor;
@@ -50,7 +50,7 @@ public class FornecedorDAO implements InterfaceFornecedor{
 		Transaction t = session.beginTransaction();
 		session.delete(fornecedor);
 		t.commit();
-		
+
 	}
 
 	@Override

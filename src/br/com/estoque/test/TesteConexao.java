@@ -13,7 +13,7 @@ public class TesteConexao {
 
 	@Test
 	public void testCadastro() {
-		Funcionario cadastro = criarCadastro();
+		Funcionario cadastro = criarCad();
 		Assert.assertNotNull(cadastro);
 		Assert.assertNotNull(cadastro.getId());
 		Assert.assertNotNull(cadastro.getNome());
@@ -32,7 +32,7 @@ public class TesteConexao {
 		Assert.assertNotNull(cadastro.getPermissao());
 	}
 
-	public Funcionario criarCadastro() {
+	public Funcionario criarCad() {
 		return criarCadastro(1L,"Maria","75380000","11111111111","Rua A","CASA 1",new Date(),
 				"senha","Setor Central",1,new Date(),"login",255,1,"sobrenome");
 	}

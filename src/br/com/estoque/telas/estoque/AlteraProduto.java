@@ -188,6 +188,10 @@ public class AlteraProduto extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * Método responsável por preencher o combo de fornecedor
+	 * 
+	 */
 	public void PreencherCombo() {
 		InterfaceFornecedor ifornecedor;
 		ifornecedor = new FornecedorDAO();
@@ -203,6 +207,10 @@ public class AlteraProduto extends JFrame {
 		}
 	}
 
+	/**
+	 * Método responsável por limpar os campos
+	 * 
+	 */
 	private void limpar() {
 		txtnome.setText("");
 		txtquantidade.setText("");
@@ -210,7 +218,11 @@ public class AlteraProduto extends JFrame {
 		cbfornecedor.setSelectedIndex(-1);
 
 	}
-	
+	/**
+	 * Método responsável por preencher as informações quando a janela for aberta
+	 * 
+	 * @param id
+	 */
 	private void preencherInformacoes(Long id) {
 
 		try {
@@ -223,7 +235,7 @@ public class AlteraProduto extends JFrame {
 			txtquantidade.setText(String.valueOf(produto.getQuantidade()));
 			txtvalor.setText(String.valueOf(produto.getValor()));
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 

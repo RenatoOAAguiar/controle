@@ -23,6 +23,7 @@ public class Principal extends JFrame {
 	private JPanel contentPane;
 	private JButton btnRh;
 	private JButton btnEstoque;
+
 	/**
 	 * Launch the application.
 	 */
@@ -41,7 +42,8 @@ public class Principal extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param permissao 
+	 * 
+	 * @param permissao
 	 */
 	public Principal(int permissao) {
 		setAlwaysOnTop(true);
@@ -52,8 +54,7 @@ public class Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+
 		btnRh = new JButton("RH");
 		btnRh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -66,7 +67,7 @@ public class Principal extends JFrame {
 		btnRh.setBackground(Color.LIGHT_GRAY);
 		btnRh.setBounds(62, 41, 122, 55);
 		contentPane.add(btnRh);
-		
+
 		btnEstoque = new JButton("ESTOQUE");
 		btnEstoque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -80,9 +81,9 @@ public class Principal extends JFrame {
 		btnEstoque.setBounds(286, 41, 122, 55);
 		contentPane.add(btnEstoque);
 		setLocationRelativeTo(null);
-		
-		switch(permissao){
-		case 7:{
+
+		switch (permissao) {
+		case 7: {
 			btnRh.setVisible(false);
 			btnEstoque.setHorizontalAlignment(JButton.CENTER);
 			break;

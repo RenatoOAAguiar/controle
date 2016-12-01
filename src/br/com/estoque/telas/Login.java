@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -35,6 +36,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtusuario;
 	private JPasswordField txtsenha;
+	private JButton btnLogar;
 
 	/**
 	 * Launch the application.
@@ -66,7 +68,8 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 		
-		ImageIcon icon = new ImageIcon("imagens/login.png");
+		URL url = Login.class.getResource("/login.png");
+		ImageIcon icon = new ImageIcon(url);
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio:");
 		lblUsurio.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -79,7 +82,7 @@ public class Login extends JFrame {
 		
 		txtsenha = new JPasswordField();
 		
-		JButton btnLogar = new JButton("Logar");
+		btnLogar = new JButton("Logar");
 		btnLogar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

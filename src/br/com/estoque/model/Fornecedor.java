@@ -20,17 +20,17 @@ public class Fornecedor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column
+	@Column(length = 20, nullable = false)
 	private String cnpj;
 
-	@Column
+	@Column(length = 30, nullable = false)
 	private String razaoSocial;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column
+	@Column(nullable = false)
 	private Date dataCadastro = new Date();
 
-	@Column
+	@Column(length = 30, nullable = false)
 	private String nome;
 
 	public long getId() {

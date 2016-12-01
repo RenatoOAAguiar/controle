@@ -10,15 +10,15 @@ import br.com.estoque.model.Funcionario;
 import br.com.estoque.negocio.InterfaceFuncionario;
 import br.com.estoque.utils.HibernateUtil;
 
-public class FuncionarioDAO implements InterfaceFuncionario{
-	
+public class FuncionarioDAO implements InterfaceFuncionario {
+
 	@Override
 	public void save(Funcionario funcionario) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		session.save(funcionario);
 		t.commit();
-		
+
 	}
 
 	@Override
@@ -28,12 +28,12 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 		Query query;
 		query = session.createQuery("from Funcionario where cpf = :cpf");
 		query.setParameter("cpf", cpf);
-		
+
 		Funcionario funcionario = (Funcionario) query.uniqueResult();
 		t.commit();
 		return funcionario;
 	}
-	
+
 	@Override
 	public Funcionario login(String login, String senha) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -42,7 +42,7 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 		query = session.createQuery("from Funcionario where login = :login and senha = :senha ");
 		query.setParameter("login", login);
 		query.setParameter("senha", senha);
-		
+
 		Funcionario funcionario = (Funcionario) query.uniqueResult();
 		t.commit();
 		return funcionario;
@@ -50,14 +50,13 @@ public class FuncionarioDAO implements InterfaceFuncionario{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Funcionario> list(String cpf,String nome) {
+	public List<Funcionario> list(String cpf, String nome) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Query query;
-		if(cpf.equals("") && nome.equals("")){
+		if (cpf.equals("") && nome.equals("")) {
 			query = session.createQuery("from Funcionario");
-		}
-		else{
+		} else {
 			query = session.createQuery("from Funcionario where cpf = :cpf or nome = :nome ");
 			query.setParameter("cpf", cpf);
 			query.setParameter("nome", nome);
