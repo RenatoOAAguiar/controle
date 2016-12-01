@@ -1,0 +1,8 @@
+br.com.estoque.dao
+br.com.estoque.model
+br.com.estoque.negocio
+br.com.estoque.telas
+br.com.estoque.telas.estoque
+br.com.estoque.telas.rh
+br.com.estoque.test
+br.com.estoque.utils
