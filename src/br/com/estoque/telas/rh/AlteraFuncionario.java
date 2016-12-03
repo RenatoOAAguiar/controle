@@ -46,7 +46,7 @@ public class AlteraFuncionario extends JFrame {
 	private JLabel label;
 	private JTextField txtlogradouro;
 	private JLabel lblnumero;
-	private JTextField txtnumero;
+	private JFormattedTextField txtnumero;
 	private JLabel lblcomplemento;
 	private JTextField txtcomplemento;
 	private JLabel lblsetor;
@@ -172,7 +172,7 @@ public class AlteraFuncionario extends JFrame {
 		lblnumero.setBounds(363, 138, 69, 14);
 		contentPane.add(lblnumero);
 
-		txtnumero = new JTextField();
+		txtnumero = new JFormattedTextField();
 		txtnumero.setBounds(453, 137, 53, 20);
 		txtnumero.setColumns(10);
 		contentPane.add(txtnumero);
@@ -216,6 +216,7 @@ public class AlteraFuncionario extends JFrame {
 		contentPane.add(txtdataNasc);
 
 		JButton btnAlterar = new JButton("Alterar");
+		rootPane.setDefaultButton(btnAlterar);
 		btnAlterar.setBounds(156, 290, 89, 23);
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -357,7 +358,7 @@ public class AlteraFuncionario extends JFrame {
 		txtcep.setText("");
 		txtdataNasc.setText("");
 		txtdatacontratacao.setText("");
-		txtnumero.setText("0");
+		txtnumero.setValue(0);
 		txtsetor.setText("");
 		txtsobrenome.setText("");
 		txtnumero.setText("");

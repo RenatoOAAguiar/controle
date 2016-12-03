@@ -126,6 +126,7 @@ public class PrincipalFuncionario extends JFrame {
 		txtcpf = new JFormattedTextField(mascaraCpf);
 
 		JButton btnConsultar = new JButton("Consultar");
+		rootPane.setDefaultButton(btnConsultar);
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				preencheTable();

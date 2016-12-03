@@ -137,6 +137,7 @@ public class AlteraProduto extends JFrame {
 		contentPane.add(btnlimpar);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		rootPane.setDefaultButton(btnAlterar);
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{

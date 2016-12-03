@@ -56,8 +56,14 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 		Query query;
 		if (cpf.equals("") && nome.equals("")) {
 			query = session.createQuery("from Funcionario");
+		} else if (!cpf.equals("") && nome.equals("")) {
+			query = session.createQuery("from Funcionario where cpf = :cpf");
+			query.setParameter("cpf", cpf);
+		} else if (cpf.equals("") && !nome.equals("")) {
+			query = session.createQuery("from Funcionario where nome like concat('%', :nome, '%')");
+			query.setParameter("nome", nome);
 		} else {
-			query = session.createQuery("from Funcionario where cpf = :cpf or nome = :nome ");
+			query = session.createQuery("from Funcionario where cpf = :cpf and nome like concat('%', :nome, '%') ");
 			query.setParameter("cpf", cpf);
 			query.setParameter("nome", nome);
 		}

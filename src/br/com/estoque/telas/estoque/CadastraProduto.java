@@ -133,6 +133,7 @@ public class CadastraProduto extends JFrame {
 		contentPane.add(cbfornecedor);
 		
 		JButton btnIncluir = new JButton("Cadastrar");
+		rootPane.setDefaultButton(btnIncluir);
 		btnIncluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{

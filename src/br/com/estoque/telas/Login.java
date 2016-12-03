@@ -83,6 +83,7 @@ public class Login extends JFrame {
 		txtsenha = new JPasswordField();
 		
 		btnLogar = new JButton("Logar");
+		rootPane.setDefaultButton(btnLogar);
 		btnLogar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

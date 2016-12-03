@@ -41,17 +41,24 @@ public class ProdutoDAO implements InterfaceProduto {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Query query;
+		FornecedorDAO f = new FornecedorDAO();
+		Fornecedor forn = new Fornecedor();
+		long id = 0L;
 		if (nome.equals("") && fornecedor.equals("")) {
 			query = session.createQuery("from Produto");
+		} else if (!nome.equals("") && fornecedor.equals("")) {
+			query = session.createQuery("from Produto where nome like concat('%', :nome, '%')");
+			query.setParameter("nome", nome);
+
+		} else if (nome.equals("") && !fornecedor.equals("")) {
+			forn = f.getFornecedor(fornecedor);
+			id = forn != null ? forn.getId() : 0L;
+			query = session.createQuery("from Produto where fornecedor_id = :fornecedor ");
+			query.setParameter("fornecedor", id);
 		} else {
-			long id = 0L;
-			if (!fornecedor.equals("")) {
-				FornecedorDAO f = new FornecedorDAO();
-				Fornecedor forn = new Fornecedor();
-				forn = f.getFornecedor(fornecedor);
-				id = forn != null ? forn.getId() : 0L;
-			}
-			query = session.createQuery("from Produto where nome = :nome or fornecedor_id = :fornecedor ");
+			forn = f.getFornecedor(fornecedor);
+			id = forn != null ? forn.getId() : 0L;
+			query = session.createQuery("from Produto where nome like concat('%', :nome, '%') and fornecedor_id = :fornecedor ");
 			query.setParameter("nome", nome);
 			query.setParameter("fornecedor", id);
 		}

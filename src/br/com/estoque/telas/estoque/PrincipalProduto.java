@@ -84,7 +84,7 @@ public class PrincipalProduto extends JFrame {
 		});
 		setTitle("Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 779, 508);
+		setBounds(100, 100, 779, 522);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -121,6 +121,7 @@ public class PrincipalProduto extends JFrame {
 		txtfornecedor.setColumns(10);
 		
 		btnConsultar = new JButton("Consultar");
+		rootPane.setDefaultButton(btnConsultar);
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				preencheTable();

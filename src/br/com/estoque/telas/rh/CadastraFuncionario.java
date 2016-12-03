@@ -48,7 +48,7 @@ public class CadastraFuncionario extends JFrame {
 	private JTextField txtlogin;
 	private JPasswordField txtsenha;
 	private JTextField txtlogradouro;
-	private JTextField txtnumero;
+	private JFormattedTextField txtnumero;
 	private JTextField txtcomplemento;
 	private JTextField txtsetor;
 	private JFormattedTextField txtcpf;
@@ -172,7 +172,7 @@ public class CadastraFuncionario extends JFrame {
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setBounds(421, 178, 69, 14);
 
-		txtnumero = new JTextField();
+		txtnumero = new JFormattedTextField();
 		txtnumero.setBounds(532, 173, 86, 20);
 		txtnumero.setColumns(10);
 		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
@@ -199,6 +199,7 @@ public class CadastraFuncionario extends JFrame {
 		cbcargo.setBounds(102, 329, 137, 22);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
+		rootPane.setDefaultButton(btnCadastrar);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -368,7 +369,7 @@ public class CadastraFuncionario extends JFrame {
 		txtdatanasc.setText("");
 		txtdatacontratacao.setText("");
 		txtcep.setText("");
-		txtnumero.setText("");
+		txtnumero.setValue(0);
 		txtsenha.setText("");
 		txtsetor.setText("");
 		txtsobrenome.setText("");
