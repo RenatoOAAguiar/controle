@@ -1,89 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.12" icons="true" automaticImage="PNG" always-add-relationships="false" 
+<class-diagram version="1.1.13" icons="true" automaticImage="PNG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
-  <class id="1" language="java" name="br.com.estoque.model.Cargo" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Cargo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="449" y="396"/>    
+  <interface id="1" language="java" name="br.com.estoque.negocio.InterfaceCargo" project="controle" 
+    file="/controle/src/br/com/estoque/negocio/InterfaceCargo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="130" x="82" y="58"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" language="java" name="br.com.estoque.negocio.InterfaceFornecedor" project="controle" 
+    file="/controle/src/br/com/estoque/negocio/InterfaceFornecedor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="392" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="3" language="java" name="br.com.estoque.negocio.InterfaceFuncionario" project="controle" 
+    file="/controle/src/br/com/estoque/negocio/InterfaceFuncionario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="659" y="143"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="4" language="java" name="br.com.estoque.negocio.InterfaceProduto" project="controle" 
+    file="/controle/src/br/com/estoque/negocio/InterfaceProduto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="912" y="134"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="br.com.estoque.dao.CargoDAO" project="controle" 
+    file="/controle/src/br/com/estoque/dao/CargoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="147" y="340"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.com.estoque.model.Fornecedor" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Fornecedor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="791" y="609"/>    
+  <class id="6" language="java" name="br.com.estoque.dao.FornecedorDAO" project="controle" 
+    file="/controle/src/br/com/estoque/dao/FornecedorDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="394" y="367"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="br.com.estoque.model.Funcionario" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Funcionario.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="450" y="-40"/>    
+  <class id="7" language="java" name="br.com.estoque.dao.FuncionarioDAO" project="controle" 
+    file="/controle/src/br/com/estoque/dao/FuncionarioDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="659" y="375"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="br.com.estoque.model.Permissao" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Permissao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="761" y="-177"/>    
+  <class id="8" language="java" name="br.com.estoque.dao.ProdutoDAO" project="controle" 
+    file="/controle/src/br/com/estoque/dao/ProdutoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="916" y="365"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="br.com.estoque.model.Pessoa" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Pessoa.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="144" y="-41"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="br.com.estoque.model.Produto" project="ControleEstoque" 
-    file="/ControleEstoque/src/br/com/estoque/model/Produto.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="793" y="137"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <association id="7">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="8" name="cargo"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="10">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="11" name="permissao"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="14" name="fornecedor"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
+  <realization id="9">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="10">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="12">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
