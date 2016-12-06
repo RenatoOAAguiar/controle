@@ -81,6 +81,7 @@ public class CadastraFuncionario extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
 				PreencherCombo();
+				txtnome.requestFocus();
 			}
 		});
 		setResizable(false);

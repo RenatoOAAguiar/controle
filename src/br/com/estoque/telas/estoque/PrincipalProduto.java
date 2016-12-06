@@ -80,6 +80,7 @@ public class PrincipalProduto extends JFrame {
 				btnAlterar.setVisible(false);
 				btnExcluir.setVisible(false);
 				btnGerarRelatorio.setVisible(false);
+				txtnome.requestFocus();
 			}
 		});
 		setTitle("Produtos");
@@ -124,6 +125,8 @@ public class PrincipalProduto extends JFrame {
 		rootPane.setDefaultButton(btnConsultar);
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				btnAlterar.setVisible(false);
+				btnExcluir.setVisible(false);
 				preencheTable();
 			}
 		});

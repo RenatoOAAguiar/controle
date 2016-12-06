@@ -83,6 +83,7 @@ public class PrincipalFuncionario extends JFrame {
 				btnAlterar.setVisible(false);
 				btnExcluir.setVisible(false);
 				btnGerarRelatorio.setVisible(false);
+				txtnome.requestFocus();
 			}
 		});
 		setResizable(false);
@@ -129,6 +130,8 @@ public class PrincipalFuncionario extends JFrame {
 		rootPane.setDefaultButton(btnConsultar);
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				btnAlterar.setVisible(false);
+				btnExcluir.setVisible(false);
 				preencheTable();
 			}
 		});

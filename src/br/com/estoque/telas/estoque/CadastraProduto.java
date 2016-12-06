@@ -65,6 +65,7 @@ public class CadastraProduto extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
 				PreencherCombo();
+				txtnome.requestFocus();
 			}
 		});
 		setTitle("Cadastro de Produto");

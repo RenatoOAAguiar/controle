@@ -58,6 +58,7 @@ public class AlteraFuncionario extends JFrame {
 	private JFormattedTextField txtdatacontratacao;
 	private JFormattedTextField txtcep;
 	private Long id;
+	private String senha;
 	private JLabel lblDataContra;
 
 	/**
@@ -86,6 +87,7 @@ public class AlteraFuncionario extends JFrame {
 				txtcpf.setText(cpf);
 				PreencherCombo();
 				preencherInformacoes(cpf);
+				txtnome.requestFocus();
 			}
 		});
 		setTitle("Alterar Cadastro");
@@ -248,6 +250,7 @@ public class AlteraFuncionario extends JFrame {
 					funcionario.setNumero(Integer.parseInt(txtnumero.getText()));
 					funcionario.setSetor(txtsetor.getText());
 					funcionario.setSobrenome(txtsobrenome.getText());
+					funcionario.setSenha(senha);
 
 					Permissao permissao = new Permissao();
 
@@ -389,6 +392,7 @@ public class AlteraFuncionario extends JFrame {
 			txtsobrenome.setText(funcionario.getSobrenome());
 			txtlogradouro.setText(funcionario.getLogradouro());
 			txtcomplemento.setText(funcionario.getComplemento());
+			this.senha = funcionario.getSenha();
 			this.id = funcionario.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

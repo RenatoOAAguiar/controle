@@ -68,6 +68,7 @@ public class AlteraProduto extends JFrame {
 			public void windowOpened(WindowEvent arg0) {
 				PreencherCombo();
 				preencherInformacoes(id);
+				txtnome.requestFocus();
 			}
 		});
 		setTitle("Alterar Produto");
