@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.estoque.model.Fornecedor;
 import br.com.estoque.model.Produto;
@@ -72,7 +73,9 @@ public class ProdutoDAO implements InterfaceProduto {
 	public void remove(Produto produto) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.delete(produto);
+		Produto p = (Produto) session.createCriteria(Produto.class)
+				.add(Restrictions.eq("id", produto.getId())).uniqueResult();
+		session.delete(p);
 		t.commit();
 
 	}

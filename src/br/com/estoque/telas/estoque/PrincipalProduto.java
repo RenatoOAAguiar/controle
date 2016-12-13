@@ -51,7 +51,7 @@ public class PrincipalProduto extends JFrame {
 	private JScrollPane scrollPane;
 	private DefaultTableModel modelo;
 	private List<Produto> dados;
-	private Long idFornecedor;
+	private Long idProduto;
 	private JLabel lblListagemDeProdutos;
 	
 	/**
@@ -144,8 +144,8 @@ public class PrincipalProduto extends JFrame {
 		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				idFornecedor = Long.parseLong(table.getValueAt(table.getSelectedRow(), 0).toString());
-				AlteraProduto a = new AlteraProduto(idFornecedor);
+				idProduto = Long.parseLong(table.getValueAt(table.getSelectedRow(), 0).toString());
+				AlteraProduto a = new AlteraProduto(idProduto);
 				setVisible(false);
 				a.setVisible(true);
 			}
@@ -156,12 +156,12 @@ public class PrincipalProduto extends JFrame {
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				idFornecedor = Long.parseLong(table.getValueAt(table.getSelectedRow(), 0).toString());
+				idProduto = Long.parseLong(table.getValueAt(table.getSelectedRow(), 0).toString());
 				try {
 					InterfaceProduto iProd;
 					iProd = new ProdutoDAO();
 					Produto produto = new Produto();
-					produto.setId(idFornecedor);
+					produto.setId(idProduto);
 					iProd.remove(produto);
 					
 					JOptionPane.showMessageDialog(null, "Registro Excluído com sucesso!", "Sucesso", JOptionPane.OK_OPTION);

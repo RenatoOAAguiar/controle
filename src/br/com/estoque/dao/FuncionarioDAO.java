@@ -60,10 +60,10 @@ public class FuncionarioDAO implements InterfaceFuncionario {
 			query = session.createQuery("from Funcionario where cpf = :cpf");
 			query.setParameter("cpf", cpf);
 		} else if (cpf.equals("") && !nome.equals("")) {
-			query = session.createQuery("from Funcionario where nome like concat('%', :nome, '%')");
+			query = session.createQuery("from Funcionario where lower(nome) like lower(concat('%', :nome, '%'))");
 			query.setParameter("nome", nome);
 		} else {
-			query = session.createQuery("from Funcionario where cpf = :cpf and nome like concat('%', :nome, '%') ");
+			query = session.createQuery("from Funcionario where cpf = :cpf and lower(nome) like lower(concat('%', :nome, '%'))");
 			query.setParameter("cpf", cpf);
 			query.setParameter("nome", nome);
 		}

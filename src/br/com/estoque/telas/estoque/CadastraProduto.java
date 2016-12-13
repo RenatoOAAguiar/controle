@@ -102,7 +102,7 @@ public class CadastraProduto extends JFrame {
 		contentPane.add(lblNome);
 
 		txtnome = new JTextField();
-		txtnome.setBounds(128, 102, 86, 20);
+		txtnome.setBounds(128, 102, 149, 20);
 		contentPane.add(txtnome);
 		txtnome.setColumns(10);
 

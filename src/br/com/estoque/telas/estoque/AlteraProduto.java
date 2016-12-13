@@ -105,7 +105,7 @@ public class AlteraProduto extends JFrame {
 		
 		txtnome = new JTextField();
 		txtnome.setColumns(10);
-		txtnome.setBounds(135, 123, 86, 20);
+		txtnome.setBounds(135, 123, 149, 20);
 		contentPane.add(txtnome);
 		
 		JLabel label_2 = new JLabel("Valor:");
