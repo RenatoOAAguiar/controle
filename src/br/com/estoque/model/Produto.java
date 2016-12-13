@@ -1,5 +1,6 @@
 package br.com.estoque.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -18,7 +19,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Produto", schema = "estoque")
-public class Produto {
+public class Produto implements Serializable {
+
+	private static final long serialVersionUID = 821564129801623246L;
 
 	@Id
 	@Column(name = "id")
@@ -34,7 +37,7 @@ public class Produto {
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAlteracao = new Timestamp(System.currentTimeMillis());
-	
+
 	@Column(nullable = false)
 	private double valor;
 

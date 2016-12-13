@@ -1,5 +1,6 @@
 package br.com.estoque.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Fornecedor")
-public class Fornecedor {
+public class Fornecedor implements Serializable {
+
+	private static final long serialVersionUID = 8067498816994190473L;
 
 	@Id
 	@Column(name = "id")

@@ -167,14 +167,14 @@ public class CadastraFuncionario extends JFrame {
 		lblLogradouro.setBounds(421, 140, 80, 14);
 
 		txtlogradouro = new JTextField();
-		txtlogradouro.setBounds(532, 135, 151, 20);
+		txtlogradouro.setBounds(550, 137, 151, 20);
 		txtlogradouro.setColumns(10);
 
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setBounds(421, 178, 69, 14);
 
 		txtnumero = new JFormattedTextField();
-		txtnumero.setBounds(532, 173, 86, 20);
+		txtnumero.setBounds(550, 175, 86, 20);
 		txtnumero.setColumns(10);
 		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
 		((AbstractDocument) txtnumero.getDocument()).setDocumentFilter(new IeValidator(5));
@@ -183,14 +183,14 @@ public class CadastraFuncionario extends JFrame {
 		lblComplemento.setBounds(421, 222, 101, 14);
 
 		txtcomplemento = new JTextField();
-		txtcomplemento.setBounds(532, 217, 86, 20);
+		txtcomplemento.setBounds(550, 219, 86, 20);
 		txtcomplemento.setColumns(10);
 
 		JLabel lblSetor = new JLabel("Setor:");
 		lblSetor.setBounds(421, 260, 53, 14);
 
 		txtsetor = new JTextField();
-		txtsetor.setBounds(532, 255, 86, 20);
+		txtsetor.setBounds(550, 257, 86, 20);
 		txtsetor.setColumns(10);
 
 		JLabel lblCargo = new JLabel("Cargo:");
@@ -327,15 +327,15 @@ public class CadastraFuncionario extends JFrame {
 		contentPane.add(lblCep);
 
 		txtcep = new JFormattedTextField(mascaraCep);
-		txtcep.setBounds(532, 104, 69, 20);
+		txtcep.setBounds(550, 103, 69, 20);
 		contentPane.add(txtcep);
 
 		JLabel lblDataContratao = new JLabel("Data Contrata\u00E7\u00E3o:");
-		lblDataContratao.setBounds(421, 299, 101, 14);
+		lblDataContratao.setBounds(421, 299, 113, 14);
 		contentPane.add(lblDataContratao);
 
 		txtdatacontratacao = new JFormattedTextField(mascaraData);
-		txtdatacontratacao.setBounds(532, 296, 77, 20);
+		txtdatacontratacao.setBounds(550, 298, 77, 20);
 		contentPane.add(txtdatacontratacao);
 	}
 

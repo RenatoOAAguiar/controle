@@ -19,9 +19,6 @@ import javax.persistence.TemporalType;
 @Table(name = "Funcionario", schema = "estoque")
 public class Funcionario extends Pessoa {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7686326325346456719L;
 
 	@Id
