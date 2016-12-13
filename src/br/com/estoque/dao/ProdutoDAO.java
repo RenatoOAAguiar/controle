@@ -47,7 +47,7 @@ public class ProdutoDAO implements InterfaceProduto {
 		if (nome.equals("") && fornecedor.equals("")) {
 			query = session.createQuery("from Produto");
 		} else if (!nome.equals("") && fornecedor.equals("")) {
-			query = session.createQuery("from Produto where nome like concat('%', :nome, '%')");
+			query = session.createQuery("from Produto where lower(nome) like lower(concat('%', :nome, '%'))");
 			query.setParameter("nome", nome);
 
 		} else if (nome.equals("") && !fornecedor.equals("")) {
@@ -58,7 +58,7 @@ public class ProdutoDAO implements InterfaceProduto {
 		} else {
 			forn = f.getFornecedor(fornecedor);
 			id = forn != null ? forn.getId() : 0L;
-			query = session.createQuery("from Produto where nome like concat('%', :nome, '%') and fornecedor_id = :fornecedor ");
+			query = session.createQuery("from Produto where lower(nome) like lower(concat('%', :nome, '%')) and fornecedor_id = :fornecedor ");
 			query.setParameter("nome", nome);
 			query.setParameter("fornecedor", id);
 		}

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,7 +38,7 @@ public class CadastraProduto extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtnome;
-	private JTextField txtquantidade;
+	private JFormattedTextField txtquantidade;
 	private JTextField txtvalor;
 	private JComboBox<String> cbfornecedor;
 
@@ -109,7 +110,7 @@ public class CadastraProduto extends JFrame {
 		lblNewLabel.setBounds(370, 105, 74, 14);
 		contentPane.add(lblNewLabel);
 		
-		txtquantidade = new JTextField();
+		txtquantidade = new JFormattedTextField();
 		txtquantidade.setBounds(470, 102, 63, 20);
 		contentPane.add(txtquantidade);
 		txtquantidade.setColumns(10);
@@ -203,6 +204,7 @@ public class CadastraProduto extends JFrame {
 	 */
 	private void limpar() {
 		txtnome.setText("");
+		txtquantidade.setValue(0);
 		txtquantidade.setText("");
 		txtvalor.setText("");
 		cbfornecedor.setSelectedIndex(-1);

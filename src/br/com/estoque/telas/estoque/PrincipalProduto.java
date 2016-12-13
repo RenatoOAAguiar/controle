@@ -264,6 +264,7 @@ public class PrincipalProduto extends JFrame {
 				btnGerarRelatorio.setVisible(true);
 			}
 			else{
+				btnGerarRelatorio.setVisible(false);
 				JOptionPane.showMessageDialog(null,"Resultado não encontrado para a consulta!" ,"Atenção!",JOptionPane.INFORMATION_MESSAGE);
 			}
 		} catch (Exception e) {
