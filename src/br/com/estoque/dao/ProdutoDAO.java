@@ -58,7 +58,8 @@ public class ProdutoDAO implements InterfaceProduto {
 		} else {
 			forn = f.getFornecedor(fornecedor);
 			id = forn != null ? forn.getId() : 0L;
-			query = session.createQuery("from Produto where lower(nome) like lower(concat('%', :nome, '%')) and fornecedor_id = :fornecedor ");
+			query = session.createQuery(
+					"from Produto where lower(nome) like lower(concat('%', :nome, '%')) and fornecedor_id = :fornecedor ");
 			query.setParameter("nome", nome);
 			query.setParameter("fornecedor", id);
 		}

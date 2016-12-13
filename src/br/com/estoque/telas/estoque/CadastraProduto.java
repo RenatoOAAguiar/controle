@@ -76,7 +76,7 @@ public class CadastraProduto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,58 +87,58 @@ public class CadastraProduto extends JFrame {
 		});
 		btnVoltar.setBounds(31, 22, 91, 23);
 		contentPane.add(btnVoltar);
-		
+
 		JLabel lblCadastroDeProdutos = new JLabel("Cadastro de Produtos");
 		lblCadastroDeProdutos.setFont(new Font("Times New Roman", Font.BOLD, 38));
 		lblCadastroDeProdutos.setBounds(217, 11, 374, 57);
 		contentPane.add(lblCadastroDeProdutos);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 66, 704, 2);
 		contentPane.add(separator);
-		
+
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(51, 105, 46, 14);
 		contentPane.add(lblNome);
-		
+
 		txtnome = new JTextField();
 		txtnome.setBounds(128, 102, 86, 20);
 		contentPane.add(txtnome);
 		txtnome.setColumns(10);
-		
+
 		JLabel lblNewLabel = new JLabel("Quantidade:");
 		lblNewLabel.setBounds(370, 105, 74, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		txtquantidade = new JFormattedTextField();
 		txtquantidade.setBounds(470, 102, 63, 20);
 		contentPane.add(txtquantidade);
 		txtquantidade.setColumns(10);
 		((AbstractDocument) txtquantidade.getDocument()).setDocumentFilter(new FixedLenghtDocument(5));
 		((AbstractDocument) txtquantidade.getDocument()).setDocumentFilter(new IeValidator(5));
-		
+
 		JLabel lblValor = new JLabel("Valor:");
 		lblValor.setBounds(51, 164, 46, 14);
 		contentPane.add(lblValor);
-		
+
 		txtvalor = new JTextField();
 		txtvalor.setBounds(128, 161, 86, 20);
 		contentPane.add(txtvalor);
 		txtvalor.setColumns(10);
-		
+
 		JLabel lblFornecedor = new JLabel("Fornecedor:");
 		lblFornecedor.setBounds(370, 164, 74, 14);
 		contentPane.add(lblFornecedor);
-		
+
 		cbfornecedor = new JComboBox<String>();
 		cbfornecedor.setBounds(470, 160, 149, 22);
 		contentPane.add(cbfornecedor);
-		
+
 		JButton btnIncluir = new JButton("Cadastrar");
 		rootPane.setDefaultButton(btnIncluir);
 		btnIncluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
+				try {
 					InterfaceProduto iProd;
 					iProd = new ProdutoDAO();
 					Produto produto = new Produto();
@@ -146,28 +146,28 @@ public class CadastraProduto extends JFrame {
 					int c = cbfornecedor.getSelectedIndex() + 1;
 					fornecedor.setId(c);
 					produto.setFornecedor(fornecedor);
-					if(txtnome.getText().equals("") || txtquantidade.getText().equals("") || txtvalor.getText().equals("")){
+					if (txtnome.getText().equals("") || txtquantidade.getText().equals("")
+							|| txtvalor.getText().equals("")) {
 						throw new ExcecaoCampoVazio();
 					}
 					produto.setNome(txtnome.getText());
 					produto.setValor(Double.parseDouble(txtvalor.getText()));
 					produto.setQuantidade(Integer.parseInt(txtquantidade.getText()));
 					iProd.save(produto);
-					
+
 					JOptionPane.showMessageDialog(null, "Produto inserido com sucesso!", "Sucesso",
 							JOptionPane.INFORMATION_MESSAGE);
-					
+
 					limpar();
-					
-				}
-				catch (ExcecaoCampoVazio e2) {
+
+				} catch (ExcecaoCampoVazio e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		btnIncluir.setBounds(188, 237, 91, 23);
 		contentPane.add(btnIncluir);
-		
+
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -178,7 +178,7 @@ public class CadastraProduto extends JFrame {
 		contentPane.add(btnLimpar);
 		setLocationRelativeTo(null);
 	}
-	
+
 	/**
 	 * Método responsável por preencher o combo de Fornecedor
 	 * 
